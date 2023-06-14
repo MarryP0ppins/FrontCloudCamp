@@ -1,0 +1,99 @@
+.main-page {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+
+    &-paper {
+        width: 100%;
+        max-width: 900px;
+        min-height: 704px;
+        margin: 24px 36px;
+        background-color: var(--color-essential);
+        border-radius: 12px 12px 0 0;
+        padding: 24px;
+    }
+
+    &-header {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &-avatar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80px;
+        min-width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        color: var(--color-avatar-font);
+        background-color: var(--color-avatar);
+        font-size: 40px;
+        line-height: 52px;
+    }
+
+    &-credentials {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        margin-left: 24px;
+    }
+
+    &-fullName {
+        font-size: 20px;
+        line-height: 26px;
+    }
+
+    &-contacts {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 12px;
+        gap: 8px 16px;
+    }
+
+    &-contact {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    &-link {
+        margin-left: 4px;
+        text-decoration: none;
+        font-size: 12px;
+        line-height: 16px;
+        color: var(--color-purple);
+    }
+
+    &-form {
+        margin-top: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    &-field {
+        position: relative;
+    }
+
+    &-text-field {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    &-input {
+        height: 44px;
+
+        input {
+            font-size: 14px;
+            line-height: 20px;
+            font-family: "SBSansInterface";
+        }
+    }
+
+    &-helper {
+        position: absolute;
+        bottom: -20px;
+    }
+}

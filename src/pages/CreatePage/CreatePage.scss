@@ -1,0 +1,17 @@
+.create-page {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+
+    &-paper {
+        width: 100%;
+        max-width: 900px;
+        min-height: 704px;
+        margin: 24px 36px;
+        background-color: var(--color-essential);
+        border-radius: 12px 12px 0 0;
+        padding: 64px 112px;
+    }
+
+}

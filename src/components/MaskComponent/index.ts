@@ -1,0 +1,1 @@
+export { MaskComponent } from './MaskComponent';

@@ -1,0 +1,58 @@
+.stepper {
+    &-stepper {
+        .MuiStepConnector-line {
+            height: 100%;
+            border: 0;
+        }
+        .Mui {
+            &-active,
+            &-completed {
+                padding: 0;
+                .MuiStepConnector-line {
+                    background-color: var(--color-purple);
+                    margin: 0 -8px;
+                }
+            }
+            &-disabled {
+                padding: 0;
+                .MuiStepConnector-line {
+                    background-color: #00000014;
+                    margin: 0 -8px;
+                }
+            }
+        }
+    }
+
+    &-label {
+        position: absolute;
+        bottom: -28px;
+        padding: 0 4px;
+        &_purple {
+            font-weight: 600;
+            color: var(--color-purple);
+        }
+    }
+
+    &-circle {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: var(--color-light-gray);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+        color: var(--color-gray);
+        &_purple {
+            background-color: var(--color-purple);
+        }
+    }
+
+    &-active {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: var(--color-essential);
+    }
+}
