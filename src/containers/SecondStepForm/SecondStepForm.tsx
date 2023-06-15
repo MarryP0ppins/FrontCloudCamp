@@ -36,7 +36,7 @@ export const SecondStepForm: React.FC<SecondStepFormProps> = ({ setCurrentStep }
         resolver: yupResolver(validator),
         defaultValues: { advantages: [{ value: '' }], ...secondaryCredentials },
     });
-    console.log('test')
+
     const {
         fields: advantagesFields,
         append: advantagesAppend,
