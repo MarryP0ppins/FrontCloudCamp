@@ -10,6 +10,7 @@ import FormHelperText from '@mui/material/FormHelperText';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
+import { ArrowIcon } from 'assets';
 import { setSecondaryCredentials } from 'store/reducers/resume';
 import { useAppDispatch, useAppSelector } from 'store/store';
 import { FirstFormProps, Sex } from 'types/resume';
@@ -111,9 +112,19 @@ export const FirstStepForm: React.FC<FirstStepFormProps> = ({ setCurrentStep }) 
                         displayEmpty
                         className={CnForm('text-field')}
                         inputProps={{ 'aria-label': 'Without label' }}
+                        IconComponent={ArrowIcon}
+                        MenuProps={{
+                            PaperProps: {
+                                sx: {
+                                    '& .MuiMenu-list': {
+                                        padding: 0,
+                                    },
+                                },
+                            },
+                        }}
                     >
                         {Object.values(Sex).map((sex, index) => (
-                            <MenuItem key={index} value={sex}>
+                            <MenuItem key={index} value={sex} sx={{ height: 40, minHeight: 40 }}>
                                 {sex}
                             </MenuItem>
                         ))}

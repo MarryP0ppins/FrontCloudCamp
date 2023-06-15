@@ -54,6 +54,24 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
         margin-top: 88px;
+        gap: 12px;
+    }
+
+    @media screen and (max-width: 768px) {
+        &-form {
+            margin-top: 48px;
+        }
+
+        &-footer {
+            margin-top: 48px;
+        }
+    }
+
+    @media screen and (max-width: 400px) {
+        &-footer {
+            flex-direction: column-reverse;
+        }
     }
 }
