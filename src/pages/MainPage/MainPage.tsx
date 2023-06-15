@@ -1,3 +1,5 @@
+import { CREDENTIALS, PHONE_REG } from 'constants/mainPage';
+
 import React, { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -8,7 +10,6 @@ import Divider from '@mui/material/Divider';
 import FormHelperText from '@mui/material/FormHelperText';
 import TextField from '@mui/material/TextField';
 import { FolderIcon } from 'assets';
-import { CREDENTIALS, PHONE_REG } from 'pages/MainPage/constants';
 import { setMainCredentials } from 'store/reducers/resume';
 import { useAppDispatch, useAppSelector } from 'store/store';
 import { MainCredentials } from 'types/resume';

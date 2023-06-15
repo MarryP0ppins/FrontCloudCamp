@@ -1,3 +1,5 @@
+import { CHECKBOX_OPTIONS, RADIO_OPTIONS } from 'constants/secondStepForm';
+
 import React, { useCallback } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { cn } from '@bem-react/classname';
@@ -5,10 +7,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { PlusIcon, TrashcanIcon } from 'assets';
-import { CHECKBOX_OPTIONS, RADIO_OPTIONS } from 'containers/SecondStepForm/constants';
 import { setSecondaryCredentials } from 'store/reducers/resume';
 import { useAppDispatch, useAppSelector } from 'store/store';
-import { SecondaryCredentials } from 'types/resume';
+import { SecondFormProps } from 'types/resume';
 import { array, number, object, ObjectSchema, string } from 'yup';
 
 import { SecondStepFormProps } from './SecondStepForm.types';
@@ -21,27 +22,22 @@ export const SecondStepForm: React.FC<SecondStepFormProps> = ({ setCurrentStep }
     const dispatch = useAppDispatch();
     const { secondaryCredentials } = useAppSelector((store) => store.resume);
 
-    const validator: ObjectSchema<SecondaryCredentials> = object({
-        advantages: array().of(object({ value: string().required() })),
+    const validator: ObjectSchema<SecondFormProps> = object({
+        advantages: array().of(object({ value: string() })),
         checkbox: array().of(number().defined()),
-        radio: number(),
+        radio: number().transform((value: number) => (value === null ? undefined : value)),
     });
 
-    const {
-        control,
-        register,
-        getValues,
-        formState: { errors: formErrors },
-    } = useForm<SecondaryCredentials>({
+    const { control, register, handleSubmit } = useForm<SecondFormProps>({
         resolver: yupResolver(validator),
-        defaultValues: { advantages: [{ value: '' }], ...secondaryCredentials },
+        defaultValues: { advantages: [{ value: '' }], checkbox: [], radio: undefined, ...secondaryCredentials },
     });
 
     const {
         fields: advantagesFields,
         append: advantagesAppend,
         remove: advantagesRemove,
-    } = useFieldArray<SecondaryCredentials>({ control, name: 'advantages' });
+    } = useFieldArray<SecondFormProps>({ control, name: 'advantages' });
 
     const handleAddAdvantage = useCallback(() => {
         advantagesAppend({ value: '' });
@@ -54,20 +50,16 @@ export const SecondStepForm: React.FC<SecondStepFormProps> = ({ setCurrentStep }
         [advantagesRemove],
     );
 
-    const previousStep = useCallback(() => {
-        if (Object.keys(formErrors).length === 0) {
-            dispatch(setSecondaryCredentials(getValues()));
-            setCurrentStep(0);
-        }
-    }, [dispatch, formErrors, getValues, setCurrentStep]);
+    const handleFormSubmit = useCallback(
+        (func: () => void) => (data: SecondFormProps) => {
+            dispatch(setSecondaryCredentials(data));
+            func();
+        },
+        [dispatch],
+    );
 
-    const nextStep = useCallback(() => {
-        if (Object.keys(formErrors).length === 0) {
-            dispatch(setSecondaryCredentials(getValues()));
-            setCurrentStep(2);
-        }
-        console.log(getValues());
-    }, [dispatch, formErrors, getValues, setCurrentStep]);
+    const handlePreviousStep = useCallback(() => setCurrentStep(0), [setCurrentStep]);
+    const handleNextStep = useCallback(() => setCurrentStep(2), [setCurrentStep]);
 
     return (
         <>
@@ -104,6 +96,7 @@ export const SecondStepForm: React.FC<SecondStepFormProps> = ({ setCurrentStep }
                                     id={`checkbox-${index}`}
                                     {...register('checkbox')}
                                     value={label}
+                                    defaultChecked={secondaryCredentials?.checkbox?.includes(label)}
                                     className={CnForm('checkbox-input')}
                                 />
                                 <label className={CnForm('checkbox-label')} htmlFor={`checkbox-${index}`}>
@@ -123,6 +116,7 @@ export const SecondStepForm: React.FC<SecondStepFormProps> = ({ setCurrentStep }
                                     id={`radio-${index}`}
                                     {...register('radio')}
                                     value={label}
+                                    defaultChecked={secondaryCredentials?.radio === label}
                                     className={CnForm('radio-input')}
                                 />
                                 <label className={CnForm('radio-label')} htmlFor={`checkbox-${index}`}>
@@ -138,8 +132,7 @@ export const SecondStepForm: React.FC<SecondStepFormProps> = ({ setCurrentStep }
                     color="purple"
                     variant="outlined"
                     sx={{ width: 'min-content', height: 44 }}
-                    onClick={previousStep}
-                    type="submit"
+                    onClick={handleSubmit(handleFormSubmit(handlePreviousStep))}
                 >
                     Назад
                 </Button>
@@ -147,8 +140,7 @@ export const SecondStepForm: React.FC<SecondStepFormProps> = ({ setCurrentStep }
                     color="purple"
                     variant="contained"
                     sx={{ width: 'min-content', height: 44 }}
-                    onClick={nextStep}
-                    type="submit"
+                    onClick={handleSubmit(handleFormSubmit(handleNextStep))}
                 >
                     Далее
                 </Button>

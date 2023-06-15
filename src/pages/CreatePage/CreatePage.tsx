@@ -1,6 +1,8 @@
-import React, { useCallback, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { cn } from '@bem-react/classname';
+import { FirstStepForm } from 'containers/FirstStepForm';
 import { SecondStepForm } from 'containers/SecondStepForm';
+import { ThirdStepForm } from 'containers/ThirdStepForm';
 import { useLoader } from 'hooks';
 import { useAppSelector } from 'store/store';
 
@@ -11,15 +13,13 @@ import './CreatePage.scss';
 const CnCreate = cn('create-page');
 
 const FORM_STEPS = [1, 2, 3];
-// const LETTERS_REG = /^[a-zA-Zа-яА-Я]+$/;
-// const LETTERS_DIGITS_REG = /^[a-zA-Zа-яА-Я0-9]+$/;
 
 export const CreatePage: React.FC = () => {
     const { postResumeStatus } = useAppSelector((store) => store.resume);
 
     useLoader([postResumeStatus]);
 
-    const [currentStep, setCurrentStep] = useState(1);
+    const [currentStep, setCurrentStep] = useState(0);
 
     // const validator: ObjectSchema<SecondaryCredentials> = object({
     //     nickname: string()
@@ -40,13 +40,24 @@ export const CreatePage: React.FC = () => {
     //     return <Navigate to="/" />;
     // }
 
-    const test = useCallback(() => setCurrentStep(currentStep - 1), [currentStep]);
+    const currentForm = useMemo(() => {
+        switch (currentStep) {
+            case 0:
+                return <FirstStepForm setCurrentStep={setCurrentStep} />;
+            case 1:
+                return <SecondStepForm setCurrentStep={setCurrentStep} />;
+            case 2:
+                return <ThirdStepForm setCurrentStep={setCurrentStep} />;
+            default:
+                return <FirstStepForm setCurrentStep={setCurrentStep} />;
+        }
+    }, [currentStep]);
+
     return (
         <div className={`layout ${CnCreate()}`}>
             <div className={CnCreate('paper')}>
                 <CustomStepper currentStep={currentStep} steps={FORM_STEPS} />
-                {currentStep === 1 && <SecondStepForm setCurrentStep={setCurrentStep} />}
-                <button onClick={test}>click</button>
+                {currentForm}
             </div>
         </div>
     );

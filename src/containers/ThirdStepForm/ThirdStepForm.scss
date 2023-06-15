@@ -1,0 +1,59 @@
+.third-step-form {
+    &-form {
+        display: flex;
+        flex-direction: column;
+        margin-top: 100px;
+        position: relative;
+    }
+
+    &-textarea {
+        width: 100%;
+        min-height: 84px;
+        margin: 0;
+        resize: vertical;
+        border: 2px solid #0000003d;
+        border-radius: 4px;
+        margin-top: 8px;
+        padding: 12px;
+
+        &_error {
+            border-color: var(--color-error);
+        }
+
+        &::-webkit-resizer {
+            background: linear-gradient(
+                    315deg,
+                    #0000 6%,
+                    #0000003d 6% 16%,
+                    #0000 16% 23%,
+                    #0000003d 23% 33%,
+                    #0000 33% 43%,
+                    #0000003d 43% 50%,
+                    #0000 50% 100%
+                )
+                no-repeat;
+            background-size: 80% 80%;
+        }
+    }
+
+    &-helper {
+        position: absolute;
+        bottom: -28px;
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    &-counter {
+        position: absolute;
+        bottom: -28px;
+        right: 0;
+        font-size: 12px;
+        line-height: 16px;
+    }
+    &-footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 88px;
+    }
+}
