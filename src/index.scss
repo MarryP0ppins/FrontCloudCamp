@@ -1,8 +1,10 @@
 @font-face {
-    font-family: "SBSansInterface";
-    src: local("SBSansInterface"), url("./fonts/SBSansInterface.ttf") format("truetype");
-    font-weight: normal;
-}
+    font-family: "SB Sans Interface";
+    font-weight: 400;
+    font-style: normal;
+    src: url("./fonts/SB-Sans-Interface.woff2") format("woff2"),
+      url("./fonts/SB-Sans-Interface.woff") format("woff");
+  }
 
 html {
     font-size: 14px;
@@ -13,12 +15,8 @@ html {
 
 body {
     margin: 0;
-    font-family: "SBSansInterface";
+    font-family: "SB Sans Interface" !important;
     -webkit-font-smoothing: antialiased;
-}
-
-* {
-    font-family: "SBSansInterface";
 }
 
 *::-webkit-scrollbar-track {

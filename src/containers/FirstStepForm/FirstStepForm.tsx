@@ -110,7 +110,7 @@ export const FirstStepForm: React.FC<FirstStepFormProps> = ({ setCurrentStep }) 
                         {...register('sex')}
                         defaultValue={secondaryCredentials?.sex ?? Sex.MAN}
                         displayEmpty
-                        className={CnForm('text-field')}
+                        className={CnForm('select')}
                         inputProps={{ 'aria-label': 'Without label' }}
                         IconComponent={ArrowIcon}
                         MenuProps={{

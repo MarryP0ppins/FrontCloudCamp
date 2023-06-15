@@ -4,7 +4,8 @@ import { Provider } from 'react-redux';
 import { App } from 'App';
 import { store } from 'store/store';
 
-import './fonts/SBSansInterface.ttf';
+import './fonts/SB-Sans-Interface.woff';
+import './fonts/SB-Sans-Interface.woff2';
 
 import reportWebVitals from './reportWebVitals';
 
