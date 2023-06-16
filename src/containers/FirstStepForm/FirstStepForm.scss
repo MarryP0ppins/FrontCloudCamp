@@ -14,26 +14,29 @@
     &-text-field {
         width: 100%;
         max-width: 300px;
-        height: 44px;
         margin: 0;
+        margin-top: 8px;
 
-        svg {
-            top: calc(50% - 4px);
-            right: 16px;
+        input {
+            height: 20px;
+            font-size: 14px;
+            line-height: 20px;
+            padding: 12px 14px;
+            outline: 1px solid var(--color-border);
+            border-radius: 4px;
+
+            &:hover {
+                outline-color: var(--color-black);
+            }
+
+            &:focus {
+                outline: 2px solid var(--color-purple);
+            }
         }
     }
 
     &-credential {
         position: relative;
-    }
-
-    &-input {
-        height: 44px;
-
-        input {
-            font-size: 14px;
-            line-height: 20px;
-        }
     }
 
     &-helper {
@@ -59,6 +62,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
         margin-top: 88px;
         gap: 12px;
     }

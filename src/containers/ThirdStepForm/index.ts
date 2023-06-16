@@ -1,1 +1,1 @@
-export { ThirdStepForm } from './ThirdStepForm';
+export { ThirdStepForm as default } from './ThirdStepForm';

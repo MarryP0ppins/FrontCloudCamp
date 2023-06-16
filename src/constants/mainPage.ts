@@ -6,7 +6,7 @@ export const CREDENTIALS: CredentialsProps[] = [
         name: 'Telegram',
     },
     {
-        href: 'https://github.com/MarryP0ppins',
+        href: 'https://github.com/MarryP0ppins/FrontCloudCamp',
         name: 'GitHub',
     },
     {

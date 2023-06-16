@@ -4,17 +4,21 @@
             height: 100%;
             border: 0;
         }
+
         .Mui {
             &-active,
             &-completed {
                 padding: 0;
+
                 .MuiStepConnector-line {
                     background-color: var(--color-purple);
                     margin: 0 -8px;
                 }
             }
+
             &-disabled {
                 padding: 0;
+
                 .MuiStepConnector-line {
                     background-color: #00000014;
                     margin: 0 -8px;
@@ -27,6 +31,7 @@
         position: absolute;
         bottom: -28px;
         padding: 0 4px;
+
         &_purple {
             font-weight: 600;
             color: var(--color-purple);
@@ -44,6 +49,7 @@
         justify-content: center;
         z-index: 1;
         color: var(--color-gray);
+        
         &_purple {
             background-color: var(--color-purple);
         }

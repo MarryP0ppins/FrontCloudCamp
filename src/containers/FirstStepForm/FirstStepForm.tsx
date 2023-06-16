@@ -7,9 +7,9 @@ import { cn } from '@bem-react/classname';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '@mui/material/Button';
 import FormHelperText from '@mui/material/FormHelperText';
+import Input from '@mui/material/Input';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import TextField from '@mui/material/TextField';
 import { ArrowIcon } from 'assets';
 import { setSecondaryCredentials } from 'store/reducers/resume';
 import { useAppDispatch, useAppSelector } from 'store/store';
@@ -61,11 +61,14 @@ export const FirstStepForm: React.FC<FirstStepFormProps> = ({ setCurrentStep }) 
             <form className={CnForm('form')}>
                 <div className={CnForm('credential')}>
                     <div className={CnForm('label')}>Nickname</div>
-                    <TextField
-                        inputProps={{ ...register('nickname') }}
-                        sx={{ marginTop: '8px' }}
+                    <Input
+                        {...register('nickname')}
+                        sx={{
+                            '&::before, ::after': {
+                                content: 'unset',
+                            },
+                        }}
                         className={CnForm('text-field')}
-                        InputProps={{ className: CnForm('input') }}
                         placeholder="Placeholder"
                         size="small"
                         error={Boolean(formErrors.nickname)}
@@ -76,11 +79,14 @@ export const FirstStepForm: React.FC<FirstStepFormProps> = ({ setCurrentStep }) 
                 </div>
                 <div className={CnForm('credential')}>
                     <div className={CnForm('label')}>Name</div>
-                    <TextField
-                        inputProps={{ ...register('name') }}
-                        sx={{ marginTop: '8px' }}
+                    <Input
+                        {...register('name')}
+                        sx={{
+                            '&::before, ::after': {
+                                content: 'unset',
+                            },
+                        }}
                         className={CnForm('text-field')}
-                        InputProps={{ className: CnForm('input') }}
                         placeholder="Placeholder"
                         size="small"
                         error={Boolean(formErrors.name)}
@@ -91,11 +97,14 @@ export const FirstStepForm: React.FC<FirstStepFormProps> = ({ setCurrentStep }) 
                 </div>
                 <div className={CnForm('credential')}>
                     <div className={CnForm('label')}>Sername</div>
-                    <TextField
-                        inputProps={{ ...register('sername') }}
-                        sx={{ marginTop: '8px' }}
+                    <Input
+                        {...register('sername')}
+                        sx={{
+                            '&::before, ::after': {
+                                content: 'unset',
+                            },
+                        }}
                         className={CnForm('text-field')}
-                        InputProps={{ className: CnForm('input') }}
                         placeholder="Placeholder"
                         size="small"
                         error={Boolean(formErrors.sername)}
@@ -143,7 +152,7 @@ export const FirstStepForm: React.FC<FirstStepFormProps> = ({ setCurrentStep }) 
                 <Button
                     color="purple"
                     variant="contained"
-                    sx={{ width: 'min-content', height: 44 }}
+                    sx={{ width: 'min-content', height: 44, whiteSpace: 'nowrap' }}
                     onClick={handleSubmit(handleFormSubmit(handleNextStep))}
                 >
                     Далее

@@ -5,7 +5,7 @@ import { useFieldArray, useForm } from 'react-hook-form';
 import { cn } from '@bem-react/classname';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
+import Input from '@mui/material/Input';
 import { PlusIcon, TrashcanIcon } from 'assets';
 import { setSecondaryCredentials } from 'store/reducers/resume';
 import { useAppDispatch, useAppSelector } from 'store/store';
@@ -69,10 +69,14 @@ export const SecondStepForm: React.FC<SecondStepFormProps> = ({ setCurrentStep }
                     <div className={CnForm('fields')}>
                         {advantagesFields.map((field, index) => (
                             <div key={field.id} className={CnForm('advantage-field')}>
-                                <TextField
-                                    inputProps={{ ...register(`advantages.${index}.value`) }}
+                                <Input
+                                    {...register(`advantages.${index}.value`)}
+                                    sx={{
+                                        '&::before, ::after': {
+                                            content: 'unset',
+                                        },
+                                    }}
                                     className={CnForm('text-field')}
-                                    InputProps={{ className: CnForm('input') }}
                                     placeholder="Advantage"
                                     size="small"
                                 />

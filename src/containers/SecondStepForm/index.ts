@@ -1,1 +1,1 @@
-export { SecondStepForm } from './SecondStepForm';
+export { SecondStepForm as default } from './SecondStepForm';

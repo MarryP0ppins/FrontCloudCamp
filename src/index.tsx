@@ -12,9 +12,9 @@ import reportWebVitals from './reportWebVitals';
 import './root.scss';
 import './index.scss';
 
-const root = document.getElementById('root') as HTMLElement;
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
-ReactDOM.createRoot(root).render(
+root.render(
     <React.StrictMode>
         <Provider store={store}>
             <App />

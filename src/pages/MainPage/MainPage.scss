@@ -58,6 +58,7 @@
         display: flex;
         flex-wrap: nowrap;
     }
+
     &-link {
         margin-left: 4px;
         text-decoration: none;
@@ -80,14 +81,24 @@
     &-text-field {
         width: 100%;
         max-width: 400px;
-    }
-
-    &-input {
-        height: 44px;
+        margin: 0;
+        margin-top: 8px;
 
         input {
+            height: 20px;
             font-size: 14px;
             line-height: 20px;
+            padding: 12px 14px;
+            outline: 1px solid var(--color-border);
+            border-radius: 4px;
+
+            &:hover {
+                outline-color: var(--color-black);
+            }
+
+            &:focus {
+                outline: 2px solid var(--color-purple);
+            }
         }
     }
 

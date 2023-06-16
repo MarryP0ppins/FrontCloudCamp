@@ -16,12 +16,12 @@ import './ThirdStepForm.scss';
 
 const CnForm = cn('third-step-form');
 
-export const ThirdStepForm: React.FC<ThirdStepFormProps> = ({ setCurrentStep }) => {
+export const ThirdStepForm: React.FC<ThirdStepFormProps> = ({ setCurrentStep, setModalVisible }) => {
     const dispatch = useAppDispatch();
     const { mainCredentials, secondaryCredentials } = useAppSelector((store) => store.resume);
 
     const validator: ObjectSchema<ThirdFormProps> = object({
-        about: string().max(10, 'Максимальная длина - 200'),
+        about: string().max(200, 'Максимальная длина - 200'),
     });
 
     const {
@@ -43,10 +43,10 @@ export const ThirdStepForm: React.FC<ThirdStepFormProps> = ({ setCurrentStep }) 
     );
 
     const handlePreviousStep = useCallback(() => setCurrentStep(1), [setCurrentStep]);
-    const handleNextStep = useCallback(
-        () => dispatch(postResumeAction({ mainCredentials, secondaryCredentials })),
-        [dispatch, mainCredentials, secondaryCredentials],
-    );
+    const handleNextStep = useCallback(() => {
+        dispatch(postResumeAction({ mainCredentials, secondaryCredentials }));
+        setModalVisible(true);
+    }, [dispatch, mainCredentials, secondaryCredentials, setModalVisible]);
 
     return (
         <>

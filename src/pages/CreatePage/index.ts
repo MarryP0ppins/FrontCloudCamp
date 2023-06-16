@@ -1,1 +1,1 @@
-export { CreatePage } from './CreatePage';
+export { CreatePage as default } from './CreatePage';

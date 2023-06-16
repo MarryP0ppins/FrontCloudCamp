@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 
-export interface ThirdStepFormProps {
-    setCurrentStep: Dispatch<SetStateAction<number>>;
+export interface AlertProps {
+    error: boolean;
+    visible: boolean;
     setModalVisible: Dispatch<SetStateAction<boolean>>;
 }

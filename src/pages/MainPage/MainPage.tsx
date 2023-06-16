@@ -8,7 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import FormHelperText from '@mui/material/FormHelperText';
-import TextField from '@mui/material/TextField';
+import Input from '@mui/material/Input';
 import { FolderIcon } from 'assets';
 import { setMainCredentials } from 'store/reducers/resume';
 import { useAppDispatch, useAppSelector } from 'store/store';
@@ -77,13 +77,14 @@ export const MainPage: React.FC = () => {
                 <form className={CnMain('form')} onSubmit={handleSubmit(handleFormSubmit)}>
                     <div className={CnMain('field')}>
                         <div className={'field-title'}>Номер телефона</div>
-                        <TextField
-                            InputProps={{
-                                inputComponent: MaskComponent,
-                                className: CnMain('input'),
-                            }}
+                        <Input
                             {...register('phone')}
-                            sx={{ marginTop: '8px' }}
+                            inputComponent={MaskComponent}
+                            sx={{
+                                '&::before, ::after': {
+                                    content: 'unset',
+                                },
+                            }}
                             className={CnMain('text-field')}
                             placeholder="+7 (999) 999-99-99"
                             size="small"
@@ -95,11 +96,14 @@ export const MainPage: React.FC = () => {
                     </div>
                     <div className={CnMain('field')}>
                         <div className={'field-title'}>Email</div>
-                        <TextField
-                            inputProps={{ ...register('email') }}
-                            sx={{ marginTop: '8px' }}
+                        <Input
+                            {...register('email')}
+                            sx={{
+                                '&::before, ::after': {
+                                    content: 'unset',
+                                },
+                            }}
                             className={CnMain('text-field')}
-                            InputProps={{ className: CnMain('input') }}
                             placeholder="sample@email.com"
                             size="small"
                             type="email"

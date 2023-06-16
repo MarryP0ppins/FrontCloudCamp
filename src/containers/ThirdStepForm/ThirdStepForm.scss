@@ -11,7 +11,7 @@
         min-height: 84px;
         margin: 0;
         resize: vertical;
-        border: 2px solid #0000003d;
+        border: 2px solid var(--color-border);
         border-radius: 4px;
         margin-top: 8px;
         padding: 12px;
@@ -23,13 +23,13 @@
         &::-webkit-resizer {
             background: linear-gradient(
                     315deg,
-                    #0000 6%,
-                    #0000003d 6% 16%,
-                    #0000 16% 23%,
-                    #0000003d 23% 33%,
-                    #0000 33% 43%,
-                    #0000003d 43% 50%,
-                    #0000 50% 100%
+                    var(--color-transparent) 6%,
+                    var(--color-border) 6% 16%,
+                    var(--color-transparent) 16% 23%,
+                    var(--color-border) 23% 33%,
+                    var(--color-transparent) 33% 43%,
+                    var(--color-border) 43% 50%,
+                    var(--color-transparent) 50% 100%
                 )
                 no-repeat;
             background-size: 80% 80%;

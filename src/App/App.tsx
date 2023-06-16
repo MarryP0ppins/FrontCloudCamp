@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { createBrowserRouter, createRoutesFromElements, Navigate, Route, RouterProvider } from 'react-router-dom';
 import { ThemeProvider } from '@emotion/react';
-import { WindowSizeContext } from 'context/WindowSizeContext';
-import { useWindowSize } from 'hooks';
-import { CreatePage } from 'pages/CreatePage';
-import { MainPage } from 'pages/MainPage';
 import { CUSTOMS_THEMES } from 'themes';
 
-export const App: React.FC = () => {
-    const { width, height } = useWindowSize();
+import { PageLoader } from 'components/PageLoader';
 
+const CreatePage = React.lazy(() => import('pages/CreatePage'));
+const MainPage = React.lazy(() => import('pages/MainPage'));
+
+export const App: React.FC = () => {
     const router = createBrowserRouter(
         createRoutesFromElements(
             <>
@@ -20,10 +19,10 @@ export const App: React.FC = () => {
         ),
     );
     return (
-        <WindowSizeContext.Provider value={{ width, height }}>
-            <ThemeProvider theme={CUSTOMS_THEMES}>
+        <ThemeProvider theme={CUSTOMS_THEMES}>
+            <Suspense fallback={<PageLoader showLoading />}>
                 <RouterProvider router={router} />
-            </ThemeProvider>
-        </WindowSizeContext.Provider>
+            </Suspense>
+        </ThemeProvider>
     );
 };
