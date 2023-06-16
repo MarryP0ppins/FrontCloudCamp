@@ -17,7 +17,6 @@ import { object, ObjectSchema, string } from 'yup';
 
 import { MaskComponent } from 'components/MaskComponent';
 
-//import { useWindowSizeContext } from 'context/WindowSizeContext';
 import './MainPage.scss';
 
 const CnMain = cn('main-page');
@@ -26,7 +25,6 @@ export const MainPage: React.FC = () => {
     const dispatch = useAppDispatch();
     const { mainCredentials } = useAppSelector((store) => store.resume);
     const navigate = useNavigate();
-    //const { height } = useWindowSizeContext();
     const validator: ObjectSchema<MainCredentials> = object({
         phone: string().matches(PHONE_REG, 'Введите корректный номер').required('Это поле обязательно'),
         email: string().email('Некорректная почта').required('Это поле обязательно'),
