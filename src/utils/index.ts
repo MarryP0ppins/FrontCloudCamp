@@ -1,2 +1,1 @@
-export { convertError } from './convertError';
-export { getAccessToken, getRefreshToken } from './token';
+export { createColor } from './createColor';

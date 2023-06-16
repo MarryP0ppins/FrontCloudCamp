@@ -1,6 +1,6 @@
 import { createTheme, PaletteColorOptions } from '@mui/material/styles';
 
-import { createColor } from 'utils/createColor';
+import { createColor } from 'utils';
 
 declare module '@mui/material/styles' {
     interface Palette {
