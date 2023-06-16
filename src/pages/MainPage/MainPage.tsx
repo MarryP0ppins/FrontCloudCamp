@@ -118,6 +118,7 @@ export const MainPage: React.FC = () => {
                         variant="contained"
                         sx={{ width: 'min-content', height: 44, marginTop: '24px' }}
                         type="submit"
+                        id="button-start"
                     >
                         Начать
                     </Button>

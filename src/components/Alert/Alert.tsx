@@ -41,6 +41,7 @@ export const Alert: React.FC<AlertProps> = ({ error, visible, setModalVisible })
                                 variant="contained"
                                 sx={{ width: 'min-content', height: 44, whiteSpace: 'nowrap' }}
                                 onClick={handleButtonClick}
+                                id={`button-${error ? 'close' : 'to-main'}`}
                             >
                                 {error ? 'Закрыть' : 'На главную'}
                             </Button>

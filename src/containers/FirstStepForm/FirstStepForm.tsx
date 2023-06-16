@@ -72,6 +72,7 @@ export const FirstStepForm: React.FC<FirstStepFormProps> = ({ setCurrentStep }) 
                         placeholder="Placeholder"
                         size="small"
                         error={Boolean(formErrors.nickname)}
+                        id="field-nickname"
                     />
                     <FormHelperText disabled error={Boolean(formErrors.nickname)} className={CnForm('helper')}>
                         {formErrors.nickname?.message}
@@ -90,6 +91,7 @@ export const FirstStepForm: React.FC<FirstStepFormProps> = ({ setCurrentStep }) 
                         placeholder="Placeholder"
                         size="small"
                         error={Boolean(formErrors.name)}
+                        id="field-name"
                     />
                     <FormHelperText disabled error={Boolean(formErrors.name)} className={CnForm('helper')}>
                         {formErrors.name?.message}
@@ -108,6 +110,7 @@ export const FirstStepForm: React.FC<FirstStepFormProps> = ({ setCurrentStep }) 
                         placeholder="Placeholder"
                         size="small"
                         error={Boolean(formErrors.sername)}
+                        id="field-sername"
                     />
                     <FormHelperText disabled error={Boolean(formErrors.sername)} className={CnForm('helper')}>
                         {formErrors.sername?.message}
@@ -131,9 +134,15 @@ export const FirstStepForm: React.FC<FirstStepFormProps> = ({ setCurrentStep }) 
                                 },
                             },
                         }}
+                        id="field-sex"
                     >
                         {Object.values(Sex).map((sex, index) => (
-                            <MenuItem key={index} value={sex} sx={{ height: 40, minHeight: 40 }}>
+                            <MenuItem
+                                key={index}
+                                value={sex}
+                                sx={{ height: 40, minHeight: 40 }}
+                                id={`field-sex-option-${sex}`}
+                            >
                                 {sex}
                             </MenuItem>
                         ))}
@@ -146,6 +155,7 @@ export const FirstStepForm: React.FC<FirstStepFormProps> = ({ setCurrentStep }) 
                     variant="outlined"
                     sx={{ width: 'min-content', height: 44 }}
                     onClick={handleSubmit(handleFormSubmit(handlePreviousStep))}
+                    id="button-back"
                 >
                     Назад
                 </Button>
@@ -154,6 +164,7 @@ export const FirstStepForm: React.FC<FirstStepFormProps> = ({ setCurrentStep }) 
                     variant="contained"
                     sx={{ width: 'min-content', height: 44, whiteSpace: 'nowrap' }}
                     onClick={handleSubmit(handleFormSubmit(handleNextStep))}
+                    id="button-next"
                 >
                     Далее
                 </Button>

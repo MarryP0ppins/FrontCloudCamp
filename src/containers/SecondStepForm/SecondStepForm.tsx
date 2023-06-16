@@ -79,14 +79,19 @@ export const SecondStepForm: React.FC<SecondStepFormProps> = ({ setCurrentStep }
                                     className={CnForm('text-field')}
                                     placeholder="Advantage"
                                     size="small"
+                                    id={`field-advatages-${index + 1}`}
                                 />
-                                <div className={CnForm('delete')} onClick={handleRemoveAdvantage(index)}>
+                                <div
+                                    className={CnForm('delete')}
+                                    onClick={handleRemoveAdvantage(index)}
+                                    id={`button-remove-${index + 1}`}
+                                >
                                     <TrashcanIcon />
                                 </div>
                             </div>
                         ))}
                     </div>
-                    <div className={CnForm('append')} onClick={handleAddAdvantage}>
+                    <div className={CnForm('append')} onClick={handleAddAdvantage} id={'button add'}>
                         <PlusIcon width={12} height={12} />
                     </div>
                 </div>
@@ -94,7 +99,11 @@ export const SecondStepForm: React.FC<SecondStepFormProps> = ({ setCurrentStep }
                     <div className={CnForm('label')}>Checkbox group</div>
                     <div className={CnForm('fields')}>
                         {CHECKBOX_OPTIONS.map((label, index) => (
-                            <div key={index} className={CnForm('checkbox')}>
+                            <div
+                                key={index}
+                                className={CnForm('checkbox')}
+                                id={`field-checkbox-group-option-${index + 1}`}
+                            >
                                 <input
                                     type="checkbox"
                                     id={`checkbox-${index}`}
@@ -114,7 +123,7 @@ export const SecondStepForm: React.FC<SecondStepFormProps> = ({ setCurrentStep }
                     <div className={CnForm('label')}>Radio group</div>
                     <div className={CnForm('fields')}>
                         {RADIO_OPTIONS.map((label, index) => (
-                            <div key={index} className={CnForm('radio')}>
+                            <div key={index} className={CnForm('radio')} id={`field-radio-group-option-${index + 1}`}>
                                 <input
                                     type="radio"
                                     id={`radio-${index}`}
@@ -137,6 +146,7 @@ export const SecondStepForm: React.FC<SecondStepFormProps> = ({ setCurrentStep }
                     variant="outlined"
                     sx={{ width: 'min-content', height: 44 }}
                     onClick={handleSubmit(handleFormSubmit(handlePreviousStep))}
+                    id="button-back"
                 >
                     Назад
                 </Button>
@@ -145,6 +155,7 @@ export const SecondStepForm: React.FC<SecondStepFormProps> = ({ setCurrentStep }
                     variant="contained"
                     sx={{ width: 'min-content', height: 44 }}
                     onClick={handleSubmit(handleFormSubmit(handleNextStep))}
+                    id="button-next"
                 >
                     Далее
                 </Button>

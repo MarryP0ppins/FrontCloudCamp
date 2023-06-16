@@ -56,7 +56,8 @@ export const ThirdStepForm: React.FC<ThirdStepFormProps> = ({ setCurrentStep, se
                     {...register('about')}
                     className={CnForm('textarea', { error: Boolean(formErrors.about) })}
                     placeholder="Placeholder"
-                ></textarea>
+                    id="field-about"
+                />
                 <FormHelperText disabled error={Boolean(formErrors.about)} className={CnForm('helper')}>
                     {formErrors.about?.message}
                 </FormHelperText>
@@ -70,6 +71,7 @@ export const ThirdStepForm: React.FC<ThirdStepFormProps> = ({ setCurrentStep, se
                     variant="outlined"
                     sx={{ width: 'min-content', height: 44 }}
                     onClick={handleSubmit(handleFormSubmit(handlePreviousStep))}
+                    id="button-back"
                 >
                     Назад
                 </Button>
@@ -78,6 +80,7 @@ export const ThirdStepForm: React.FC<ThirdStepFormProps> = ({ setCurrentStep, se
                     variant="contained"
                     sx={{ width: 'min-content', height: 44 }}
                     onClick={handleSubmit(handleFormSubmit(handleNextStep))}
+                    id="button-next"
                 >
                     Отправить
                 </Button>
