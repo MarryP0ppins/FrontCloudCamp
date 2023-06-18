@@ -10,7 +10,7 @@ export const CREDENTIALS: CredentialsProps[] = [
         name: 'GitHub',
     },
     {
-        href: '',
+        href: 'https://disk.yandex.ru/i/QO1XdYZU6CSMCQ',
         name: 'Resume',
     },
 ];
