@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { Suspense, useMemo, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { cn } from '@bem-react/classname';
 import { useLoader } from 'hooks';
@@ -6,6 +6,7 @@ import { useAppSelector } from 'store/store';
 
 import { Alert } from 'components/Alert';
 import { CustomStepper } from 'components/CustomStepper';
+import { PageLoader } from 'components/PageLoader';
 
 import './CreatePage.scss';
 
@@ -48,7 +49,7 @@ export const CreatePage: React.FC = () => {
             <div className={`layout ${CnCreate()}`}>
                 <div className={CnCreate('paper')}>
                     <CustomStepper currentStep={currentStep} steps={FORM_STEPS} />
-                    {currentForm}
+                    <Suspense fallback={<PageLoader showLoading />}>{currentForm}</Suspense>
                 </div>
             </div>
         </>
