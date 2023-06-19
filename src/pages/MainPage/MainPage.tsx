@@ -8,13 +8,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import FormHelperText from '@mui/material/FormHelperText';
-import Input from '@mui/material/Input';
 import { FolderIcon } from 'assets';
 import { setMainCredentials } from 'store/reducers/resume';
 import { useAppDispatch, useAppSelector } from 'store/store';
 import { MainCredentials } from 'types/resume';
 import { object, ObjectSchema, string } from 'yup';
 
+import { InputCustom } from 'components/InputCustom';
 import { MaskComponent } from 'components/MaskComponent';
 
 import './MainPage.scss';
@@ -75,15 +75,10 @@ export const MainPage: React.FC = () => {
                 <form className={CnMain('form')} onSubmit={handleSubmit(handleFormSubmit)}>
                     <div className={CnMain('field')}>
                         <div className={'field-title'}>Номер телефона</div>
-                        <Input
+                        <InputCustom
                             {...register('phone')}
                             inputComponent={MaskComponent}
-                            sx={{
-                                '&::before, ::after': {
-                                    content: 'unset',
-                                },
-                            }}
-                            className={CnMain('text-field')}
+                            className={CnMain('input')}
                             placeholder="+7 (999) 999-99-99"
                             size="small"
                             error={Boolean(formErrors.phone)}
@@ -94,14 +89,9 @@ export const MainPage: React.FC = () => {
                     </div>
                     <div className={CnMain('field')}>
                         <div className={'field-title'}>Email</div>
-                        <Input
+                        <InputCustom
                             {...register('email')}
-                            sx={{
-                                '&::before, ::after': {
-                                    content: 'unset',
-                                },
-                            }}
-                            className={CnMain('text-field')}
+                            className={CnMain('input')}
                             placeholder="sample@email.com"
                             size="small"
                             type="email"

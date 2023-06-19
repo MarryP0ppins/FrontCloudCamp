@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { cn } from '@bem-react/classname';
 import Button from '@mui/material/Button';
 import { AccessIcon, CloseIcon, ErrorIcon } from 'assets';
-import { clearError } from 'store/reducers/resume';
+import { clearError, resetResumeState } from 'store/reducers/resume';
 import { useAppDispatch } from 'store/store';
 
 import { AlertProps } from 'components/Alert/Alert.types';
@@ -22,6 +22,7 @@ export const Alert: React.FC<AlertProps> = ({ error, visible, setModalVisible })
             dispatch(clearError());
         } else {
             navigate('/');
+            dispatch(resetResumeState());
         }
     }, [dispatch, error, navigate, setModalVisible]);
 
